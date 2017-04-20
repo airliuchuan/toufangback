@@ -1,0 +1,32 @@
+extends ./includes/layout
+
+block content
+    .container
+        .row
+            .col-md-5
+                form(method="POST", action="/user/signin")
+                    .form-group
+                        label(for="signinName") 用户名:
+                        input#signinName.form-control(type="text",name="user[name]")
+                    .form-group
+                        label(for="signinpassword") 密码:
+                        input#signinpassword.form-control(type="password",name="user[password]")
+                        .modal-footer
+                            //button.btn.btn-default(type="button", data-toggle="modal", data-target="#signupModal") 注册
+                            button.btn.btn-success(type="submit") 登录
+
+    #signupModal.modal.fade
+        .modal-dialog
+            .modal-content
+                form(method="POST", action="/user/signup")
+                    .modal-header 注册
+                    .modal-body
+                        .form-group
+                            label(for="signupName") 用户名
+                            input#signupName.form-control(name="user[name]", type="text")
+                        .form-group
+                            label(for="signupPassword") 密码
+                            input#signupPassword.form-control(name="user[password]", type="password")
+                    .modal-footer
+                        button.btn.btn-default(type="button", data-dismiss="modal") 关闭
+                        //button.btn.btn-success(type="submit") 注册

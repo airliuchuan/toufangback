@@ -1,0 +1,20 @@
+extends ./includes/layout
+
+block content
+    .container
+        .row
+            form.form-horizontal(method="POST", action="/user/new")
+                .form-group
+                    if user._id
+                        input(type="hidden", name="user[_id]")
+                .form-group
+                    label.col-sm-2.control-label(for="inputId")
+                    .col-sm-10
+                        input#inputId(type="text", name="user[name]", value=user.name)
+                .form-group
+                    label.col-sm-2.control-label(for="inputRole")
+                    .col-sm-10
+                        input#inputRole(type="text", name="user[role]", value=user.role)
+                .form-group
+                    .col-sm-offset-2.col-sm-10
+                    button.btn.btn-defaault.pull-right(type="submit") 录入

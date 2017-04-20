@@ -1,0 +1,25 @@
+extends ./includes/layout
+
+block content
+    .container
+        .row
+            .page-header
+                h4 用户列表
+            table.table.table-hover.table-bordered
+                thead
+                    tr
+                        th id
+                        th 权限
+                        th 跟新时间
+                        th 修改权限
+                        th 删除
+                tbody
+                    each item in users
+                        tr
+                            td #{item.name}
+                            td #{item.role}
+                            td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
+                            td
+                                a(href="/user/update/#{item._id}") 修改
+                            td
+                                button.btn.btn-danger(type="button") 删除

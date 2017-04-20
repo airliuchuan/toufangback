@@ -1,0 +1,36 @@
+extends ./includes/layout
+
+block content
+  .container(style="padding-bottom: 100px")
+    .row
+
+      form.form-horizontal(method="post", action="/admin/new", style="margin-bottom: 70px;")
+        .form-group
+          if toufang._id
+            input(type="hidden",name="toufang[_id]",value=toufang._id)
+          label.col-sm-2.control-label(for="inputTitle") 投放渠道
+          .col-sm-10
+            input#inputTitle.form-control(type="text", name="toufang[title]", value=toufang.title)
+        .form-group
+          label.col-sm-2.control-label(for="inputUrl") url
+          .col-sm-10
+            input#inputUrl.form-control(type="text", name="toufang[url]", value=toufang.url)
+        .form-group
+          label.col-sm-2.control-label(for="inputWechat") 微信号
+          .col-sm-10
+            input#inputWechat.form-control(type="text", name="toufang[wechat]", value=toufang.wechat)
+        .form-group
+          label.col-sm-2.control-label(for="inputTitle1") 行1
+          .col-sm-10
+            input#inputTitle1.form-control(type="text", name="toufang[title1]", value=toufang.title1)
+        .form-group
+          label.col-sm-2.control-label(for="inputTitle2") 行2
+          .col-sm-10
+            input#inputTitle2.form-control(type="text", name="toufang[title2]", value=toufang.title2)
+        .form-group
+          label.col-sm-2.control-label(for="inputTitle3") 行3
+          .col-sm-10
+            input#inputTitle3.form-control(type="text", name="toufang[title3]", value=toufang.title3)
+        .form-group
+          .col-sm-offset-2.col-sm-10
+          button.btn.btn-defaault.pull-right(type="submit") 提交

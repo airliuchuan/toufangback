@@ -1,0 +1,25 @@
+{
+  "name": "toufangback",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "kay"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "toufangback"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
