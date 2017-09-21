@@ -3,15 +3,10 @@ extends ./includes/layout
 block content
     .container(style="padding-bottom: 100px")
         .row
-            if categories.length > 0
-                each item in categories
-                    a.btn.btn-primary(type="button", style="margin: 10px 5px", href="/category/list?id=#{item.name}") #{item.name}
-                        //-span.badge #{item.channels.length}
-        .row
             table.table.table-hover.table-bordered(style="table-layout:fixed")
                 thead
                     tr
-                        th(colspan="2") 备注
+                        th 备注
                         th 投放渠道
                         th 跳转url
                         th 落地页url
@@ -20,14 +15,13 @@ block content
                         th 行1
                         th 行2
                         th 行3
-                        th 录入时间
                         th 是否审核
                         th 更新
                         th 删除
                 tbody
-                    each item in toufangs
+                    each item in categories
                         tr(class="item-id-#{item._id}")
-                            td(colspan="2") #{item.remark}
+                            td #{item.remark}
                             td #{item.title}
                             td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;") #{item.url}
                             td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;") #{item.luodiyeUrl}
@@ -36,24 +30,12 @@ block content
                             td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;") #{item.title1}
                             td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;") #{item.title2}
                             td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;") #{item.title3}
-                            td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
-                            //-url上的..就是带着跳转链接的第一个子域名
                             td
                                 if item.isAudit
                                     input.audit(type="checkbox", value="#{item._id}", checked)
                                 else
-                                    input.audit(type="checkbox", value="#{item._id}")    
+                                    input.audit(type="checkbox", value="#{item._id}")
                             td: a(target="_blank", href="/admin/update/#{item._id}") 修改
                             td
                                 button.btn.btn-danger.del(type="button", data-id="#{item._id}") 删除
-            ul.pagination
-                - for(var j = 0; j < totalPage; j ++) {
-                    - if(currentPage == (j + 1)) {
-                        li.active
-                            span #{currentPage}
-                    - } else {
-                        li
-                            a(href="/admin/list?p=#{j}") #{j + 1}
-                    - }
-                - }
     script(src="/js/admin.js")

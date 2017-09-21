@@ -1,22 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
 
-var Toufang = new Schema({
-    remark: String,
-    title: String,
-    url: String,
-    wechat: String,
-    title1: String,
-    title2: String,
-    title3: String,
-    auditUrl: String,
-    luodiyeUrl: String,
-    category: String,
-    isAudit: {
-        type: Boolean,
-        default: false
+var Count = new Schema({
+    btn1: {
+        type: String
     },
+    btn2: String,
+    btn3: String,
     meta: {//更新数据的时间记录
         createAt: {
             type: Date,
@@ -29,7 +19,7 @@ var Toufang = new Schema({
     }
 });
 
-Toufang.pre('save', function(next) {
+Count.pre('save', function(next) {
     if(this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now();
     }else{
@@ -39,4 +29,4 @@ Toufang.pre('save', function(next) {
     next();//将存储流程进行下去
 });
 
-module.exports = Toufang;
+module.exports = Count;

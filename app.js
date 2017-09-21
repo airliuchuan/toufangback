@@ -38,7 +38,6 @@ app.use(session({
     saveUninitialized: true
 }));
 
-
 //处理登录状态user
 app.use(function (req, res, next) {
     var _user = req.session.user;
@@ -46,9 +45,7 @@ app.use(function (req, res, next) {
     app.locals.user = _user;//模板传值对象locals,app.locals为全局,res.locals为局部
 
     next();
-})
-
-
+});
 
 router(app);
 // catch 404 and forward to error handler

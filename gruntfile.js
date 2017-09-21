@@ -29,7 +29,7 @@ module.exports = function(grunt) {//gruntfile的基本格式
                     debug: true,
                     delayTime: 1,
                     env: {
-                        PORT: 3000
+                        PORT: 3500
                     },
                     cwd: __dirname
                 }

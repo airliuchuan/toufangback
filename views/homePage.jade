@@ -3,12 +3,13 @@ extends ./includes/layout
 block content
     .container(style="padding-bottom: 100px")
         .row
-            table.table.table-hover.table-bordered
+            table.table.table-hover.table-bordered(style="table-layout:fixed")
                 thead
                     tr
                         th 投放渠道
                         th objectId
-                        th 渠道地址
+                        th 落地页url
+                        th 审核url
                         th 微信号
                         th 录入时间
                 tbody
@@ -16,7 +17,8 @@ block content
                         tr
                             td #{item.title}
                             td #{item._id}
-                            td #{item.url}
+                            td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;") #{item.luodiyeUrl}
+                            td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;") #{item.auditUrl}
                             td #{item.wechat}
                             td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
             ul.pagination

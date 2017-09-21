@@ -3,18 +3,44 @@ extends ./includes/layout
 block content
   .container(style="padding-bottom: 100px")
     .row
-
       form.form-horizontal(method="post", action="/admin/new", style="margin-bottom: 70px;")
         .form-group
           if toufang._id
             input(type="hidden",name="toufang[_id]",value=toufang._id)
+        //.form-group
+        //  label.col-sm-2.control-label(for="inputCategory") 渠道分类
+        //  .col-sm-10
+        //    input#inputCategory.form-control(type="text", name="toufang[categoryName]", value=toufang.categoryName)
+        .form-group
+          label.col-sm-2.control-label 分类选项
+          each cat in categories
+            label.radio-inline
+              if toufang.category
+                input(type="radio", name="toufang[category]", value=cat.name, checked=cat.name.trim()==toufang.category.trim())
+                | #{cat.name}
+              else
+                input(type="radio", name="toufang[category]", value=cat.name)
+                | #{cat.name}
+        .form-group
+          label.col-sm-2.control-label(for="inputRemark") 备注
+          .col-sm-10
+            input#inputRemark.form-control(type="text", name="toufang[remark]", value=toufang.remark)
+        .form-group
           label.col-sm-2.control-label(for="inputTitle") 投放渠道
           .col-sm-10
             input#inputTitle.form-control(type="text", name="toufang[title]", value=toufang.title)
         .form-group
-          label.col-sm-2.control-label(for="inputUrl") url
+          label.col-sm-2.control-label(for="inputUrl") 跳转url
           .col-sm-10
             input#inputUrl.form-control(type="text", name="toufang[url]", value=toufang.url)
+        .form-group
+          label.col-sm-2.control-label(for="inputluodiyeUrl") 落地页url
+          .col-sm-10
+            input#inputluodiyeUrl.form-control(type="text", name="toufang[luodiyeUrl]", value=toufang.luodiyeUrl)
+        .form-group
+          label.col-sm-2.control-label(for="inputAuditUrl") 审核url
+          .col-sm-10
+            input#inputAuditUrl.form-control(type="text", name="toufang[auditUrl]", value=toufang.auditUrl)
         .form-group
           label.col-sm-2.control-label(for="inputWechat") 微信号
           .col-sm-10
@@ -33,4 +59,5 @@ block content
             input#inputTitle3.form-control(type="text", name="toufang[title3]", value=toufang.title3)
         .form-group
           .col-sm-offset-2.col-sm-10
-          button.btn.btn-defaault.pull-right(type="submit") 提交
+          button#btnSubmit.btn.btn-defaault.pull-right(type="submit") 提交
+  script(src="/js/admin.js")

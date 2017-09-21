@@ -1,0 +1,17 @@
+extends ./includes/layout
+
+block content
+    .container
+        .row
+            form.form-horizontal(action="/category/create", method="post")
+                .form-group
+                    if category._id
+                        label.col-sm-2.control-label(for="inputObjectId") 渠道分类
+                        .col-sm-8
+                            input#inputObjectId.form-control(type="hidden", name="category[_id]", value=category._id)
+                .form-group
+                    label.col-sm-2.control-label(for="inputCategory") 渠道分类
+                    .col-sm-8
+                        input#inputCategory.form-control(type="text", name="category[name]", value=category.name)
+                    .col-sm-2
+                        button#subbtn.btn.btn-default(type="submit") 提交
