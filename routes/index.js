@@ -13,6 +13,6 @@ module.exports = function(app) {
     app.use('/user', require('./user/index.js'));
     //分类路由接口
     app.use('/category', userRequire.signinRequired, require('./category/index.js'));
-    //循环微信号
-    app.use('/wxcode', require('./wxcode/index.js'));
+    //按钮点击次数统计
+    app.use('/count', require('./clickCount/index.js'));
 };

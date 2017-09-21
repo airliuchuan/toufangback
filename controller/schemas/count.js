@@ -2,11 +2,19 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Count = new Schema({
+    sessionid: String,
     btn1: {
-        type: String
+        type: String,
+        default: 0
     },
-    btn2: String,
-    btn3: String,
+    btn2: {
+        type: String,
+        default: 0
+    },
+    btn3: {
+        type: String,
+        default: 0
+    },
     meta: {//更新数据的时间记录
         createAt: {
             type: Date,

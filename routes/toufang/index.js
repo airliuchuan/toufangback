@@ -15,7 +15,7 @@ router.get('/input', function(req, res) {
     });
 });
 
-//post 录入投放信息
+//post 投放信息
 router.post('/new',function(req, res) {
     // console.log(req.body.toufang);
 
